@@ -39,15 +39,13 @@ Network::~Network(){
 void Network::update(int time, double intensity){
 	//We need to update the network by updating all the Neurons 
 	//and control that they are connected or not
-	std::vector<int> connexions;
-	for(auto neuron : network){
-		connexions = neuron->getTarget();
-		for(auto connect : connexions){
+	for(auto& neuron : network){
+		for(auto connect : neuron->getTarget()){
 			neuron->ifReceiveMessage(network[connect]);
 		}
 	}
 	//we update all the neurons after updating all the buffers
-	for(auto neuron : network){
+	for(auto& neuron : network){
 		neuron->updateStatePoisson(time, intensity);
 	}
 }

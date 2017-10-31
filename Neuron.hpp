@@ -40,11 +40,9 @@ class Neuron {
 	int clock;	//!< Internal clock
 	double refrac_time; //!< Refractory time
 	double membrane_pot; //!< Membrane potential
-	int number_spikes; ///nombre de spikes fait dans l'intervalle donné
-	std::vector<double> time_spikes; /// times when a Neuron spikes
+	int number_spikes; //!< Number of spikes in a given interval
+	std::vector<double> time_spikes; //!< times when a Neuron spikes
 	Type type; ///type is exitatory or inhibiory
-
 	std::array<double,29> buffer;	//!< The buffer
-	
 	std::vector<int> targets;	//! Its connexions with others
 };
