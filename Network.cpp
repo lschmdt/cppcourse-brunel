@@ -129,11 +129,16 @@ void Network::createFile(){
 	std::ofstream fichier;
 	std::string nom_de_fichier("../spikes.gdf");
 	fichier.open(nom_de_fichier.c_str());
-	fichier << " 1 " << std::endl;
 	for(size_t i(0) ; i < network.size(); ++i){
 		for (auto spiketime : network[i]->getTime()){
 			fichier << spiketime << '\t' << i << '\n';
 		}
 	}
+	
+	for(size_t i(0) ; i < network.size(); ++i){
+		network[i]->numberspike
+			
 	fichier.close();
+	
+	
 }

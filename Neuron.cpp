@@ -89,20 +89,18 @@ void Neuron::updateState(int time, double intensity){
 		refrac_time -= DT;
 		return;
 	}
-	
+		//std::cout << " Total : " << buffer[clock%(int)buffer.size()] << std::endl;
+
 	/*si le buffer de son pas de temps clock contient un potentiel 
 	car il a recu un message d'un autre synapse
 	rajouter la constante J a son potentiel*/
-	if (buffer[clock%(int)buffer.size()] != 0){
+	if (buffer[clock%(int)buffer.size()] != 0.0){
 		membrane_pot += buffer[clock%(int)buffer.size()];
-		std::cout << "buffer : " << buffer[clock%(int)buffer.size()] << std::endl;
-		buffer[clock%(int)buffer.size()] = 0;
+		buffer[clock%(int)buffer.size()] = 0.0;
 	}
-	/*double c;
-	for (auto elm : buffer){
-		c += elm;
-	}
-	std::cout << " Total : " << c << std::endl;*/
+	
+		std::cout << " Total : " << buffer[clock%(int)buffer.size()] << std::endl;
+
 		
 	// calcul de la membrane en général
 	membrane_pot = exp(-REAL_TIME/TAU)*membrane_pot + intensity*R*(1.0-exp(-REAL_TIME/TAU));
@@ -117,14 +115,14 @@ void Neuron::updateState(int time, double intensity){
  * @param n :the sending neuron
  */
 void Neuron::ifReceiveMessage(Neuron* n){
-	int J;
+	double j;
 	if (n->getEtat() == true){
 		if(n->getType()== EXCITATORY){
-			J=JE;
+			j=JE;
 		}else{
-			J=JI;
+			j=JI;
 		}
-		setBuffer(((int)(clock + (DELAY/REAL_TIME))%(int)buffer.size()), J);
+		setBuffer(((int)(clock + (DELAY/REAL_TIME))%(int)buffer.size()), j);
 	}
 }
 	
