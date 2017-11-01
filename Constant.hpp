@@ -6,7 +6,7 @@ int const NI(2500); //!< number of inhibitory neurons
 int const N(12500); //!< Total number of neurons
 double const TAU(20.0); //!< constant tau 
 double const R(20.0); //!< constant R
-double const POTENTIEL_MAX(19.8); //!< maximal potential of the membrane
+double const POTENTIEL_MAX(20.0); //!< maximal potential of the membrane
 int const REFRAC_TIME(3); //!< Refractory time
 int const DT(1); //!< Time step
 int const T_START(0); //!<< Starting time of simulation

@@ -25,7 +25,7 @@ TEST (NeuronTest, MembranePotential){
 
 TEST(NeuronTest, RefractoryTest){
 	Neuron neuron(EXCITATORY);
-	if(neuron.getEtat()==true){
+	if(neuron.isRefractory()){
 		EXPECT_EQ(neuron.getPotential(), 0.0);
 	}
 }

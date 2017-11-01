@@ -1,12 +1,12 @@
 #include "Neuron.hpp"
 /**Neuron's constructor
  */
-Neuron::Neuron(Type x) : etat(false), refrac_time(0), membrane_pot(POTENTIEL_RESET),
-type(x), buffer({0}) 
+Neuron::Neuron(Type x) : etat(false), clock(0), refrac_time(0), membrane_pot(POTENTIEL_RESET),
+number_spikes(0), type(x), buffer({0})
 
 {
 	time_spikes.clear();
-	number_spikes = 0;
+	targets.clear();
 }
 /** Neuron's destructor
  */
@@ -75,7 +75,7 @@ void Neuron::updateState(int time, double intensity){
 	//si la membrane a un potentiel trop élevé
 	if(membrane_pot >= POTENTIEL_MAX){
 		membrane_pot = POTENTIEL_RESET;
-		time_spikes.push_back(time*REAL_TIME);
+		time_spikes.push_back(time/REAL_TIME);
 		++number_spikes;
 		refrac_time = REFRAC_TIME;
 		etat = true;

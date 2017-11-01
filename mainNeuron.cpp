@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	Network n;
 	double t(T_START);
 	
-	//choix de l'intensité + vérification que celle ci est positive
+	/*//choix de l'intensité + vérification que celle ci est positive
 	double intensity;
 	do{
 		std::cout << "Give an intensity : ";
@@ -25,19 +25,13 @@ int main(int argc, char **argv)
 		std::cin >> a;
 		std::cout << " and the upper one : ";
 		std::cin >> b;
-	}while(a< T_START and a>b and b>T_STOP);
+	}while(a< T_START and a>b and b>T_STOP);*/
 
 	//on met à jour le potentiel tous les dt suivant l'intervalle de temps
 	//dans lequel il se trouve
+	
 	while ( t < T_STOP){
-
-		if ( t < a or t>=b) { 
-			n.update(t, 0.0);
-		}
-		else if ( t >= a and t < b) {
-			n.update(t, intensity);
-		}
-		
+		n.update(t, 1.0);
 		t += DT;
 	}
 	std::ofstream fichier;
