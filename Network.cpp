@@ -31,6 +31,9 @@ Network::~Network(){
 	}
 }
 
+std::vector<Neuron*> Network::getNetwork(){
+	return network;
+}
 /**
  * This method updates our network
  * @param time : time of the simulation 
@@ -48,6 +51,8 @@ void Network::update(int time, double intensity){
 	for(auto& neuron : network){
 		neuron->updateStatePoisson(time, intensity);
 	}
+	std::cout << "1: " << network[1]->getPotential() << "     "  << network[1]->getNumberSpikes() << "    time : " << time << std::endl;
+	std::cout << "2: " << network[2]->getPotential() << "     "  << network[2]->getNumberSpikes() << "    time : " << time << std::endl;
 }
 
 
@@ -117,12 +122,14 @@ void Network::createConnexions(){
 	}
 }
 
-/**
+/**@brief creation of a file
  * use to create a file with all our spikes time
  */
-void Network::createFile(std::ofstream& fichier){
-//the file where our time are stored
-
+void Network::createFile(){
+	std::ofstream fichier;
+	std::string nom_de_fichier("../spikes.gdf");
+	fichier.open(nom_de_fichier.c_str());
+	fichier << " 1 " << std::endl;
 	for(size_t i(0) ; i < network.size(); ++i){
 		for (auto spiketime : network[i]->getTime()){
 			fichier << spiketime << '\t' << i << '\n';

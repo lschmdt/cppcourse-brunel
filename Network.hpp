@@ -18,6 +18,7 @@ class Network {
 	
 	int nbConnexion();
 	void createConnexions();
+	std::vector<Neuron*> getNetwork();
 	
 	void update(int time, double intensity);
 	
@@ -25,7 +26,7 @@ class Network {
 
 	void simulationLoopNetwork(int time, double i_ext);
 	
-	void createFile(std::ofstream& fichier);
+	void createFile();
 	
 	private:
 	std::vector<Neuron*> network; //!< neurons that are on the network

@@ -1,7 +1,7 @@
 import numpy as np
 import pylab as pl
 
-data = np.genfromtxt('spikes.txt')
+data = np.genfromtxt('spikes.gdf')
 
 select = np.array([d for d in data if d[1] < 30])
 data1 = select.transpose()

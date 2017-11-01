@@ -72,10 +72,12 @@ Type Neuron::getType() const{
  * @param intensity : the external intensity
  */
 void Neuron::updateState(int time, double intensity){ 
+	
+	etat = false;
 	//si la membrane a un potentiel trop élevé
 	if(membrane_pot >= POTENTIEL_MAX){
 		membrane_pot = POTENTIEL_RESET;
-		time_spikes.push_back(time/REAL_TIME);
+		time_spikes.push_back(time);
 		++number_spikes;
 		refrac_time = REFRAC_TIME;
 		etat = true;
@@ -88,22 +90,25 @@ void Neuron::updateState(int time, double intensity){
 		return;
 	}
 	
-	// calcul de la membrane en général
-	membrane_pot = exp(-DT*0.1/TAU)*membrane_pot + intensity*R*(1-exp(-DT*0.1/TAU));
-	
 	/*si le buffer de son pas de temps clock contient un potentiel 
 	car il a recu un message d'un autre synapse
 	rajouter la constante J a son potentiel*/
 	if (buffer[clock%(int)buffer.size()] != 0){
 		membrane_pot += buffer[clock%(int)buffer.size()];
+		std::cout << "buffer : " << buffer[clock%(int)buffer.size()] << std::endl;
 		buffer[clock%(int)buffer.size()] = 0;
 	}
+	/*double c;
+	for (auto elm : buffer){
+		c += elm;
+	}
+	std::cout << " Total : " << c << std::endl;*/
+		
+	// calcul de la membrane en général
+	membrane_pot = exp(-REAL_TIME/TAU)*membrane_pot + intensity*R*(1.0-exp(-REAL_TIME/TAU));
 	
-	//maintenant il faut aussi acualiser avec les random externe
-
 	clock += DT;
-	etat = false;
-	
+
 }
 
 /**this method is useful to give a potential when two 
@@ -155,8 +160,10 @@ void Neuron::updateStatePoisson(int t, int i_ext){
 	if (not isRefractory()){
 		//no need to add it to he buffer because there is no need of
 		//buffer time
-		static std::default_random_engine rd;
-		static std::poisson_distribution<> disExternal(NU_EXT*REAL_TIME);
+		//static std::default_random_engine rd;
+		static std::random_device rd;
+		static std::mt19937 gen(rd());
+		static std::poisson_distribution<> disExternal(NU_EXT);
 		
 		membrane_pot += disExternal(rd)*JE;
 	}

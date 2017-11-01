@@ -31,13 +31,11 @@ int main(int argc, char **argv)
 	//dans lequel il se trouve
 	
 	while ( t < T_STOP){
-		n.update(t, 1.0);
+		n.update(t, 0.0);
 		t += DT;
 	}
-	std::ofstream fichier;
-	std::string nom_de_fichier("spikes.txt");
-	fichier.open(nom_de_fichier.c_str());
-	n.createFile(fichier);
+	
+	n.createFile();
 	
 	return 0;
 }
