@@ -13,7 +13,7 @@ int const T_START(0); //!<< Starting time of simulation
 int const T_STOP(500); //!< ending time of simulation
 double const POTENTIEL_RESET(0.0); //!< Potential reset
 double const JE(0.1); //!< Potential to add if a neuron receive a message from exitatory neuron
-double const JI(0.5);//!< Potential to add if a neuron receive a message from inhibitory neuron
+double const JI(-0.5);//!< Potential to add if a neuron receive a message from inhibitory neuron
 double const J(0.2); //!< External potential
 double const DELAY(1.5); //!< Delay for receinving the post-synaptic potential
 int const G(5);

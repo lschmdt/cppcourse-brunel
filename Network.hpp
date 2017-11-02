@@ -21,11 +21,8 @@ class Network {
 	std::vector<Neuron*> getNetwork();
 	
 	void update(int time, double intensity);
-	
-	std::vector<int> chooseRandomly(int a, int b, int connexion, int x);
-
+	std::vector<int> chooseRandomly(int a, int b, int connexion, int x, Type type);
 	void simulationLoopNetwork(int time, double i_ext);
-	
 	void createFile();
 	
 	private:

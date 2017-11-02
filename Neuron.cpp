@@ -13,7 +13,7 @@ number_spikes(0), type(x), buffer({0})
 Neuron::~Neuron() {}
 
 /** getter
- * @return le potentiel de la membrane
+ * @return the membrane potential
  */
 double Neuron::getPotential() const
 { 
@@ -21,7 +21,7 @@ double Neuron::getPotential() const
 }
 
 /** getter
- * @return le nombre de spike
+ * @return the number of spikes
  */
 int Neuron::getNumberSpikes() const
 { 
@@ -29,7 +29,7 @@ int Neuron::getNumberSpikes() const
 }
 
 /**
- * @return retourne le temps
+ * @return return the time
  */
 std::vector<double> Neuron::getTime() const
 { 
@@ -53,7 +53,7 @@ bool Neuron::isRefractory(){
 }
 
 /**
- * @return si le neuron spike ou non
+ * @return if the neuron spikes or not
  */
 bool Neuron::getEtat() const{
 	return etat;
@@ -89,19 +89,18 @@ void Neuron::updateState(int time, double intensity){
 		refrac_time -= DT;
 		return;
 	}
-		//std::cout << " Total : " << buffer[clock%(int)buffer.size()] << std::endl;
-
+	
 	/*si le buffer de son pas de temps clock contient un potentiel 
 	car il a recu un message d'un autre synapse
 	rajouter la constante J a son potentiel*/
 	if (buffer[clock%(int)buffer.size()] != 0.0){
+			std::cout << "buffer 1 : " << buffer[clock%(int)buffer.size()] << std::endl;
+
 		membrane_pot += buffer[clock%(int)buffer.size()];
 		buffer[clock%(int)buffer.size()] = 0.0;
-	}
-	
-		std::cout << " Total : " << buffer[clock%(int)buffer.size()] << std::endl;
+			std::cout << "buffer 2 : " << buffer[clock%(int)buffer.size()] << std::endl;
 
-		
+	}
 	// calcul de la membrane en général
 	membrane_pot = exp(-REAL_TIME/TAU)*membrane_pot + intensity*R*(1.0-exp(-REAL_TIME/TAU));
 	
@@ -158,7 +157,6 @@ void Neuron::updateStatePoisson(int t, int i_ext){
 	if (not isRefractory()){
 		//no need to add it to he buffer because there is no need of
 		//buffer time
-		//static std::default_random_engine rd;
 		static std::random_device rd;
 		static std::mt19937 gen(rd());
 		static std::poisson_distribution<> disExternal(NU_EXT);

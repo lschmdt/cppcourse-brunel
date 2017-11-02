@@ -65,15 +65,21 @@ void Network::update(int time, double intensity){
  * @param x : number of the neuron to prevent to be connect with himself
  * @return a vector<int> with all the choosen random numbers
  */ 
-std::vector<int> Network::chooseRandomly(int a, int b, int connexion, int x){
-	static std::default_random_engine randomGenerator; 
-    static std::uniform_int_distribution<int> disNeuron(a, b);
-    std::vector<int> connect;
+std::vector<int> Network::chooseRandomly(int a, int b, int connexion, int x, Type type){
+	std::default_random_engine randomGenerator; 
+	std::uniform_int_distribution<int> disENeuron(a, b);
+	std::uniform_int_distribution<int> disINeuron(a, b);
+	
+	std::vector<int> connect;
     connect.clear(); //make sure ther is nothing inside
 	int i(0);
 	do{
 		int aleatory(0);
-		aleatory = disNeuron(randomGenerator);
+		if( type == EXCITATORY){
+			aleatory = disENeuron(randomGenerator);
+		}else{
+			aleatory = disINeuron(randomGenerator);
+		}
 		if(aleatory != x){
 			connect.push_back(aleatory);
 			++i;
@@ -109,12 +115,12 @@ void Network::simulationLoopNetwork(int time_simul, double i_ext){
 void Network::createConnexions(){
 	std::vector<int> indices;
 	for(size_t i(0); i < network.size(); ++i){
-		indices = chooseRandomly(0,NE,CE,i);
+		indices = chooseRandomly(0,NE,CE,i, EXCITATORY);
 		for (auto elm : indices){
 			network[i]->addTarget(elm);
 		}
 		indices.clear();
-		indices=chooseRandomly(NE,NE+NI, CI, i);
+		indices=chooseRandomly(NE,NE+NI, CI, i, INHIBITORY);
 		for(auto elm : indices){
 			network[i]->addTarget(elm);
 		}
@@ -134,10 +140,7 @@ void Network::createFile(){
 			fichier << spiketime << '\t' << i << '\n';
 		}
 	}
-	
-	for(size_t i(0) ; i < network.size(); ++i){
-		network[i]->numberspike
-			
+		
 	fichier.close();
 	
 	
