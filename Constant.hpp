@@ -10,7 +10,7 @@ double const POTENTIEL_MAX(19.8); //!< maximal potential of the membrane
 int const REFRAC_TIME(3); //!< Refractory time
 int const DT(1); //!< Time step
 int const T_START(0); //!<< Starting time of simulation
-int const T_STOP(500); //!< ending time of simulation
+int const T_STOP(1000); //!< ending time of simulation
 double const POTENTIEL_RESET(0.0); //!< Potential reset
 double const JE(0.1); //!< Potential to add if a neuron receive a message from exitatory neuron
 double const JI(-0.5);//!< Potential to add if a neuron receive a message from inhibitory neuron

@@ -74,7 +74,7 @@ Type Neuron::getType() const{
 void Neuron::updateState(int time, double intensity){ 
 	
 	etat = false;
-	//si la membrane a un potentiel trop élevé
+	//if the membrane potentiel is more then potentiel max
 	if(membrane_pot >= POTENTIEL_MAX){
 		membrane_pot = POTENTIEL_RESET;
 		time_spikes.push_back(time);
@@ -82,7 +82,7 @@ void Neuron::updateState(int time, double intensity){
 		refrac_time = REFRAC_TIME;
 		etat = true;
 	}	
-	//si c'est dans le temps réfractaire
+	//if it is refractory, it has a refractory time before updating the potential
 	if (isRefractory())
 	{
 		membrane_pot = POTENTIEL_RESET;
@@ -90,18 +90,14 @@ void Neuron::updateState(int time, double intensity){
 		return;
 	}
 	
-	/*si le buffer de son pas de temps clock contient un potentiel 
-	car il a recu un message d'un autre synapse
-	rajouter la constante J a son potentiel*/
+	/*if the buffer contains a potentiel in its step time because the neuron receives 
+	 * a message from another synapse then add it to the membrane potential
+	 */
 	if (buffer[clock%(int)buffer.size()] != 0.0){
-			std::cout << "buffer 1 : " << buffer[clock%(int)buffer.size()] << std::endl;
-
 		membrane_pot += buffer[clock%(int)buffer.size()];
 		buffer[clock%(int)buffer.size()] = 0.0;
-			std::cout << "buffer 2 : " << buffer[clock%(int)buffer.size()] << std::endl;
-
 	}
-	// calcul de la membrane en général
+	//calculus of the membrane
 	membrane_pot = exp(-REAL_TIME/TAU)*membrane_pot + intensity*R*(1.0-exp(-REAL_TIME/TAU));
 	
 	clock += DT;

@@ -51,8 +51,6 @@ void Network::update(int time, double intensity){
 	for(auto& neuron : network){
 		neuron->updateStatePoisson(time, intensity);
 	}
-	std::cout << "1: " << network[1]->getPotential() << "     "  << network[1]->getNumberSpikes() << "    time : " << time << std::endl;
-	std::cout << "2: " << network[2]->getPotential() << "     "  << network[2]->getNumberSpikes() << "    time : " << time << std::endl;
 }
 
 
