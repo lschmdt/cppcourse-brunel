@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 
 	//on met à jour le potentiel tous les dt suivant l'intervalle de temps
 	//dans lequel il se trouve
-	
 	while ( t < T_STOP){
 		n.update(t, 0.0);
 		t += DT;

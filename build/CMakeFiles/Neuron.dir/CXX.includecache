@@ -9,6 +9,8 @@
 /home/INTRANET/lschmidt/myfiles/cppba3/Neuron/Constant.hpp
 iostream
 -
+cmath
+-
 
 /home/INTRANET/lschmidt/myfiles/cppba3/Neuron/Network.cpp
 Network.hpp

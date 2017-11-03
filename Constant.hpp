@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <cmath>
 
 int const NE(10000); //!< number of excitatory neurons
 int const NI(2500); //!< number of inhibitory neurons
@@ -20,8 +21,9 @@ int const G(5);
 int const ETA(2);
 int const CE(NE*0.1); //!< Number of excitatory connexions
 int const CI(NI*0.1); //!< Number of inhibitory connexions
-double const NU_TH(POTENTIEL_MAX/(J*TAU*CE)); //!< Nu Threashold
 double const NU_EXT(ETA*20/(J*TAU)); //!< Nu extern
-
 double const REAL_TIME(0.1); //!< to return to the real time
+double const CONSTANTE_1(exp(-REAL_TIME/TAU)); //!< constant 1 for the membrane potentiel calculus
+double const CONSTANTE_2(R*(1.0-CONSTANTE_1)); //!< constant 2 for membrane's calculus
+
 

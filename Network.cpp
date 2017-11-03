@@ -118,7 +118,7 @@ void Network::createConnexions(){
 			network[i]->addTarget(elm);
 		}
 		indices.clear();
-		indices=chooseRandomly(NE,NE+NI, CI, i, INHIBITORY);
+		indices=chooseRandomly(NE,N, CI, i, INHIBITORY);
 		for(auto elm : indices){
 			network[i]->addTarget(elm);
 		}

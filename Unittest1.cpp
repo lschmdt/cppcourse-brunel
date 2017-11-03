@@ -10,7 +10,6 @@ TEST (NeuronTest, MembranePotential){
 	Neuron neuron3(EXCITATORY);
 	
 	/*spikes : 924, 1868*/
-	
 	//Test that when a spike occurs the potential is at 20mV
 	neuron1.simulationLoopNeuron(921, 1.01);
 	EXPECT_NEAR(neuron1.getPotential(), 20, 1);

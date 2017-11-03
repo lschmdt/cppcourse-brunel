@@ -3,7 +3,6 @@
  */
 Neuron::Neuron(Type x) : etat(false), clock(0), refrac_time(0), membrane_pot(POTENTIEL_RESET),
 number_spikes(0), type(x), buffer({0})
-
 {
 	time_spikes.clear();
 	targets.clear();
@@ -72,7 +71,6 @@ Type Neuron::getType() const{
  * @param intensity : the external intensity
  */
 void Neuron::updateState(int time, double intensity){ 
-	
 	etat = false;
 	//if the membrane potentiel is more then potentiel max
 	if(membrane_pot >= POTENTIEL_MAX){
@@ -92,6 +90,9 @@ void Neuron::updateState(int time, double intensity){
 		return;
 	}
 	
+	//calculus of the membrane
+	membrane_pot = CONSTANTE_1*membrane_pot + intensity*CONSTANTE_2;
+
 	/*if the buffer contains a potentiel in its step time because the neuron receives 
 	 * a message from another synapse then add it to the membrane potential
 	 */
@@ -99,11 +100,8 @@ void Neuron::updateState(int time, double intensity){
 		membrane_pot += buffer[clock%(int)buffer.size()];
 		buffer[clock%(int)buffer.size()] = 0.0;
 	}
-	//calculus of the membrane
-	membrane_pot = exp(-REAL_TIME/TAU)*membrane_pot + intensity*R*(1.0-exp(-REAL_TIME/TAU));
 	
 	clock += DT;
-
 }
 
 /**this method is useful to give a potential when two 
@@ -159,7 +157,7 @@ void Neuron::updateStatePoisson(int t, int i_ext){
 		static std::mt19937 gen(rd());
 		static std::poisson_distribution<> disExternal(NU_EXT);
 		
-		membrane_pot += disExternal(rd)*JE;
+		membrane_pot += disExternal(rd)*J;
 	}
 	
 }
