@@ -87,6 +87,8 @@ void Neuron::updateState(int time, double intensity){
 	{
 		membrane_pot = POTENTIEL_RESET;
 		refrac_time -= DT;
+		//the buffer need to be empty because this message will never arrive to destination
+		buffer[clock%(int)buffer.size()] = 0.0; 
 		return;
 	}
 	
