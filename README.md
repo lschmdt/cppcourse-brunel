@@ -9,5 +9,10 @@ There is also a transmission delay which is representated with the help of a buf
 All the constants as numbers of inhibitory or excitatory neurons, potential which are given after spikes could be changed in the 
 file : Constant.hpp
 To use the doxygen documentation : make doc -> then the file will be create into the folder html. To open it click on a file in this folder.
+
 To run the simulation : ./Neuron -> after the compilation with cmake
+
 To run the tests and look if they pass or not : ./Neuron_unittest1 -> after the compilation with cmake
+
+To obtain the plots : https://cs116-plot.antoinealb.net/ once there, upload spikes.gdf into the website and submit it. Then the image will appear.
+
