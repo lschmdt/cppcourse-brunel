@@ -1,0 +1,4 @@
+/home/INTRANET/lschmidt/myfiles/cppba3/Neuron/CMakeFiles/Neuron.dir
+/home/INTRANET/lschmidt/myfiles/cppba3/Neuron/CMakeFiles/Neuron_unittest1.dir
+/home/INTRANET/lschmidt/myfiles/cppba3/Neuron/gtest/CMakeFiles/gtest.dir
+/home/INTRANET/lschmidt/myfiles/cppba3/Neuron/gtest/CMakeFiles/gtest_main.dir

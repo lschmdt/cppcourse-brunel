@@ -9,6 +9,7 @@
 #include <random>
 #include <fstream>
 #include "Constant.hpp"
+//#include <cassert>
 #include "Neuron.hpp"
 
 class Network {
@@ -21,10 +22,10 @@ class Network {
 	std::vector<Neuron*> getNetwork();
 	
 	void update(int time, double intensity);
-	std::vector<int> chooseRandomly(int a, int b, int connexion, int x, Type type);
+	std::vector<int> chooseRandomly(int a, int b, int connexion, Type type);
 	void simulationLoopNetwork(int time, double i_ext);
 	void createFile();
 	
 	private:
-	std::vector<Neuron*> network; //!< neurons that are on the network
+	std::vector<Neuron*> network; // neurons that are on the network
 };

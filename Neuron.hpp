@@ -36,13 +36,13 @@ class Neuron {
 	void updateStatePoisson(int t, int i_ext);
 
 	private:
-	bool etat;	//!< Spiking or not
-	int clock;	//!< Internal clock
-	double refrac_time; //!< Refractory time
-	double membrane_pot; //!< Membrane potential
-	int number_spikes; //!< Number of spikes in a given interval
-	std::vector<double> time_spikes; //!< times when a Neuron spikes
-	Type type; ///type is exitatory or inhibiory
-	std::array<double,29> buffer;	//!< The buffer
-	std::vector<int> targets;	//! Its connexions with others
+	bool etat;	// Spiking or not
+	int clock;	// Internal clock
+	double refrac_time; // Refractory time
+	double membrane_pot; // Membrane potential
+	int number_spikes; // Number of spikes in a given interval
+	std::vector<double> time_spikes; // times when a Neuron spikes
+	Type type; //type is exitatory or inhibiory
+	std::array<double,29> buffer;	// The buffer
+	std::vector<int> targets;	// Its connexions with others
 };
