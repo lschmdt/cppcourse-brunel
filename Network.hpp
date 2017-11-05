@@ -9,7 +9,7 @@
 #include <random>
 #include <fstream>
 #include "Constant.hpp"
-//#include <cassert>
+#include <cassert>
 #include "Neuron.hpp"
 
 class Network {
