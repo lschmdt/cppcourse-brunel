@@ -8,6 +8,12 @@ There is also a transmission delay which is representated with the help of a buf
 
 All the constants as numbers of inhibitory or excitatory neurons, potential which are given after spikes could be changed in the 
 file : Constant.hpp
+There is 4 case plots in my project (A,B,C and D). Parameter ETA and G change in those case. That illustrate the figure 8 of the Brunel.
+  - case A : g = 3 and ETA = 2
+  - case B : g = 6 and ETA = 4
+  - case C : g = 5 and ETA = 2
+  - case D : g = 4.5 and ETA = 0.9
+  
 To use the doxygen documentation : make doc -> then the file will be create into the folder html. To open it click on a file in this folder.
 
 To run the simulation : ./Neuron -> after the compilation with cmake
