@@ -15,7 +15,7 @@ class Neuron {
 	~Neuron();
 	double getPotential() const;
 	int getNumberSpikes() const;
-	std::vector<double> getTime() const;
+	const std::vector<double>& getTime() const;
 	bool getEtat() const;
 	Type getType() const;
 	void setBuffer(int i, double potential);
@@ -26,14 +26,14 @@ class Neuron {
 	bool isRefractory();
 	
 	//for the simulation
-	void simulationLoopNeuron(int time_simul, int i_ext);
+	void simulationLoopNeuron(int time_simul, double i_ext);
 	
 	//target test
 	void addTarget(int i);
 	std::vector<int> getTarget() const;
 	
 	//choose random external current who spikes
-	void updateStatePoisson(int t, int i_ext);
+	void updateStatePoisson(int t, double i_ext);
 
 	private:
 	bool etat;	// Spiking or not

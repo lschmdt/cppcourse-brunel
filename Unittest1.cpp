@@ -11,11 +11,11 @@ TEST (NeuronTest, MembranePotential){
 	
 	/*spikes : 924, 1868*/
 	//Test that when a spike occurs the potential is at 20mV
-	neuron1.simulationLoopNeuron(921, 1.01);
-	EXPECT_NEAR(neuron1.getPotential(), 20, 1);
+	neuron1.simulationLoopNeuron(923, 1.01);
+	EXPECT_NEAR(neuron1.getPotential(), 20.0 , 1);
 	
 	neuron2.simulationLoopNeuron(0, 1.01);
-	EXPECT_NEAR(neuron2.getPotential(),0, 1);
+	EXPECT_NEAR(neuron2.getPotential(),0.0 , 1);
 	
 	neuron3.simulationLoopNeuron(925, 1.01);
 	EXPECT_NEAR(neuron3.getPotential(), 0, 1);

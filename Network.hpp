@@ -19,7 +19,7 @@ class Network {
 	
 	int nbConnexion();
 	void createConnexions();
-	std::vector<Neuron*> getNetwork();
+	const std::vector<Neuron*>& getNetwork();
 	
 	void update(int time, double intensity);
 	std::vector<int> chooseRandomly(int a, int b, int connexion, Type type);

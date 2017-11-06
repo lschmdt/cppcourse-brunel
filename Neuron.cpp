@@ -30,7 +30,7 @@ int Neuron::getNumberSpikes() const
 /**
  * @return return the time
  */
-std::vector<double> Neuron::getTime() const
+const std::vector<double>& Neuron::getTime() const
 { 
 	return time_spikes; 
 }
@@ -73,7 +73,7 @@ Type Neuron::getType() const{
 void Neuron::updateState(int time, double intensity){ 
 	etat = false;
 	//if the membrane potentiel is more then potentiel max
-	if(membrane_pot >= POTENTIEL_MAX){
+	if(membrane_pot > POTENTIEL_MAX){
 		membrane_pot = POTENTIEL_RESET;
 		time_spikes.push_back(time);
 		++number_spikes;
@@ -81,7 +81,7 @@ void Neuron::updateState(int time, double intensity){
 		etat = true;
 	}	
 	//if it is refractory, it has a refractory time before updating the potential
-	if (isRefractory())
+	if (refrac_time !=0)
 	{
 		membrane_pot = POTENTIEL_RESET;
 		refrac_time -= DT;
@@ -110,20 +110,20 @@ void Neuron::updateState(int time, double intensity){
  * @param n :the sending neuron
  */
 void Neuron::ifReceiveMessage(Neuron* n){
-	double j;
+	double j(0.0);
 	if (n->getEtat() == true){
 		if(n->getType()== EXCITATORY){
 			j=JE;
 		}else{
 			j=JI;
 		}
-		setBuffer(((int)(clock + (DELAY/REAL_TIME))%(int)buffer.size()), j);
+		buffer[((int)(clock + (DELAY/REAL_TIME))%(int)buffer.size())] += j;
 	}
 }
 	
 /**make a Simulation loop for a given time. It helps for the test
  */	
-void Neuron::simulationLoopNeuron(int time_simul, int i_ext){
+void Neuron::simulationLoopNeuron(int time_simul, double i_ext){
 	int time(T_START);
 	while(time <= time_simul){
 		updateState(time, i_ext);
@@ -148,7 +148,7 @@ std::vector<int> Neuron::getTarget() const{
  * @param i_ext : external current
  * @param t : time of the simulation
  */
-void Neuron::updateStatePoisson(int t, int i_ext){
+void Neuron::updateStatePoisson(int t, double i_ext){
 	updateState(t, i_ext);
 	if (not isRefractory()){
 		//no need to add it to he buffer because there is no need of

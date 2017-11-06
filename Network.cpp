@@ -31,7 +31,7 @@ Network::~Network(){
 	}
 }
 
-std::vector<Neuron*> Network::getNetwork(){
+const std::vector<Neuron*>& Network::getNetwork(){
 	return network;
 }
 /**
@@ -71,13 +71,13 @@ std::vector<int> Network::chooseRandomly(int a, int b, int connexion, Type type)
     connect.clear(); //make sure ther is nothing inside
 	int i(0);
 	do{
-		int aleatory(0);
+		int n(0);
 		if( type == EXCITATORY){
-			aleatory = disENeuron(randomGenerator);
+			n = disENeuron(randomGenerator);
 		}else{
-			aleatory = disINeuron(randomGenerator);
+			n = disINeuron(randomGenerator);
 		}
-		connect.push_back(aleatory);
+		connect.push_back(n);
 		++i;
 	} while (i < connexion);
 	
