@@ -25,7 +25,7 @@ class Network {
 	
 	void updateTwo(int time, double intensity);
 	
-	std::vector<int> chooseRandomly();
+	/*std::vector<int>*/ void chooseRandomly();
 
 	void simulationLoopNetwork(int time, double i_ext);
 	

@@ -20,7 +20,7 @@ class Neuron {
 	bool getEtat() const;
 	Type getType() const;
 	void setBuffer(int i, double potential);
-	std::array<double,29> getBuffer();
+	std::array<double,BUFFER_SIZE> getBuffer();
 
 	void updateState(int time, double intensity);
 	
@@ -33,6 +33,7 @@ class Neuron {
 	//target test
 	void addTarget(int i);
 	const std::vector<int>& getTarget() const;
+	double chooseJ();
 	
 	//choose random external current who spikes
 	void updateStatePoisson(int t, double i_ext);
@@ -45,6 +46,6 @@ class Neuron {
 	int number_spikes; // Number of spikes in a given interval
 	std::vector<double> time_spikes; // times when a Neuron spikes
 	Type type; //type is exitatory or inhibiory
-	std::array<double,29> buffer;	// The buffer
+	std::array<double,BUFFER_SIZE> buffer;	// The buffer
 	std::vector<int> targets;	// Its connexions with others
 };

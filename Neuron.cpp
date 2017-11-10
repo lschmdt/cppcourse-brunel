@@ -2,10 +2,13 @@
 /**Neuron's constructor
  */
 Neuron::Neuron(Type x) : etat(false), clock(0), refrac_time(0), membrane_pot(POTENTIEL_RESET),
-number_spikes(0), type(x), buffer({0})
+number_spikes(0), type(x)
 {
 	time_spikes.clear();
 	targets.clear();
+	for(size_t i(0); i< buffer.size(); ++i){
+		buffer[i] = 0.0;
+	}
 }
 /** Neuron's destructor
  */
@@ -43,7 +46,7 @@ void Neuron::setBuffer(int i, double potential){
 	buffer[i] += potential;
 }
 
-std::array<double,29> Neuron::getBuffer(){
+std::array<double,BUFFER_SIZE> Neuron::getBuffer(){
 	return buffer;
 }
 
@@ -76,7 +79,9 @@ Type Neuron::getType() const{
  */
 void Neuron::updateState(int time, double intensity){ 
 	etat = false;
-	int indice(clock%(int)buffer.size());
+	int indice(clock%BUFFER_SIZE);
+	assert(indice <= BUFFER_SIZE);
+	
 	//if the membrane potentiel is more then potentiel max
 	if(membrane_pot > POTENTIEL_MAX){
 		membrane_pot = POTENTIEL_RESET;
@@ -115,18 +120,25 @@ void Neuron::updateState(int time, double intensity){
  * @param n :the sending neuron
  */
 void Neuron::ifReceiveMessage(Neuron* n){
-	double j(0.0);
+	assert(n != nullptr);
 	if (n->getEtat() == true){
-		if(n->getType()== EXCITATORY){
-			j=JE;
-		}else{
-			j=JI;
-		}
-		buffer[((int)(clock + (DELAY/REAL_TIME))%(int)buffer.size())] += j;
+		//assert(((clock + (int)(DELAY/REAL_TIME))%BUFFER_SIZE) < BUFFER_SIZE);
+		buffer[(clock + (int)(DELAY))%BUFFER_SIZE] += n->chooseJ();
 	}
 }
-	
+
+double Neuron::chooseJ(){
+	double j(0.0);
+	if(type == EXCITATORY){
+		j=JE;
+	}else{
+		j=JI;
+	}
+	return j;
+}	
 /**make a Simulation loop for a given time. It helps for the test
+ * @param time_simul : time for our simulation
+ * @param i_ext : external current
  */	
 void Neuron::simulationLoopNeuron(int time_simul, double i_ext){
 	int time(T_START);
@@ -137,6 +149,7 @@ void Neuron::simulationLoopNeuron(int time_simul, double i_ext){
 }	
 
 /** to add a connexion with an other Neuron
+ * @param i : indice of connected neurons
  */
 void Neuron::addTarget(int i){
 	targets.push_back(i);

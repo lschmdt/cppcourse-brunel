@@ -53,7 +53,7 @@ TEST(NeuronTest,TeacherTest){
 TEST(NetworkTest, NumberConnexions){
 	Network n;
 	//test if my programm does have the right number of connections.
-	EXPECT_EQ(n.nbConnexion(), 1250*N);
+	EXPECT_EQ(n.nbConnexion(), C*N);
 }
 
 int main(int argc, char**argv) 
