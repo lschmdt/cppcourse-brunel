@@ -22,6 +22,12 @@ TEST (NeuronTest, MembranePotential){
 	
 }
 
+TEST(NeuronTest, NegativeInput){
+	Neuron n(EXCITATORY);
+	n.updateState(1, -1.0);
+	EXPECT_EQ(-1 * R * (1.0 - exp(- REAL_TIME / TAU)), n.getPotential());
+}
+
 TEST(NeuronTest, RefractoryTest){
 	Neuron neuron(EXCITATORY);
 	//test if a refractory neuron has its potential to 0

@@ -86,35 +86,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> NE(10000); </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> NI(2500); </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> N(12500); </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> TAU(20.0); </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> R(20.0); </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> POTENTIEL_MAX(19.8); </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> REFRAC_TIME(3); </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> DT(1); </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> T_START(0); </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> T_STOP(1000); </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> POTENTIEL_RESET(0.0); </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> JE(0.1); </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> JI(-0.5);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> J(0.2); </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> DELAY(1.5); </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> G(5);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> ETA(2);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CE(NE*0.1); </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CI(NI*0.1); </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> NU_EXT(ETA*20/(J*TAU)); </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> REAL_TIME(0.1); </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_1(exp(-REAL_TIME/TAU)); </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_2(R*(1.0-CONSTANTE_1)); </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> NE(10000); <span class="comment">// number of excitatory neurons</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> NI(2500); <span class="comment">// number of inhibitory neurons</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> N(12500); <span class="comment">// Total number of neurons</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> TAU(20.0); <span class="comment">// constant tau </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> R(20.0); <span class="comment">// constant R</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> POTENTIEL_MAX(20.0); <span class="comment">// maximal potential of the membrane</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> REFRAC_TIME(2.0); <span class="comment">// Refractory time</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> DT(1); <span class="comment">// Time step</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> T_START(0); <span class="comment">// Starting time of simulation</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> T_STOP(1000); <span class="comment">// ending time of simulation</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> POTENTIEL_RESET(0.0); <span class="comment">// Potential reset</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> G(5); <span class="comment">//ratio JI/JE</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> JE(0.1); <span class="comment">// Potential to add if a neuron receive a message from exitatory neuron</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> JI(-G*JE);<span class="comment">//Potential to add if a neuron receive a message from inhibitory neuron</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> J(0.2); <span class="comment">// External potential</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> DELAY(15); <span class="comment">// Delay for receinving the post-synaptic potential</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> ETA(2);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CE(NE*0.1); <span class="comment">// Number of excitatory connexions</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CI(NI*0.1); <span class="comment">// Number of inhibitory connexions</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> C(CE+CI); <span class="comment">//Total number of constant</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> NU_EXT(ETA*20/(J*TAU)); <span class="comment">// Nu extern</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> REAL_TIME(0.1); <span class="comment">// to return to the real time</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_1(exp(-REAL_TIME/TAU)); <span class="comment">// constant 1 for the membrane potentiel calculus</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_2(R*(1.0-CONSTANTE_1)); <span class="comment">// constant 2 for membrane&#39;s calculus</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 3 2017 23:24:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 10 2017 15:23:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

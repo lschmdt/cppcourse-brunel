@@ -103,12 +103,9 @@ void Neuron::updateState(int time, double intensity){
 	 */
 	if (buffer[indice] != 0.0){
 		membrane_pot += buffer[indice];
-		//std::cout << " buffer : " << time << "  " <<buffer[indice] << std::endl;
-			buffer[indice] = 0.0;
-
 	}
 	
-	
+	buffer[indice] = 0.0;
 	clock += DT;
 }
 
@@ -164,7 +161,6 @@ void Neuron::updateStatePoisson(int t, double i_ext){
 		static std::random_device rd;
 		static std::mt19937 gen(rd());
 		static std::poisson_distribution<> disExternal(NU_EXT);
-		
 		membrane_pot += disExternal(rd)*J;
 	}
 	

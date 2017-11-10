@@ -89,67 +89,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;random&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Constant.hpp&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">enum</span> Type{EXCITATORY, INHIBITORY};</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classNeuron.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNeuron.html">Neuron</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="classNeuron.html#a3bd1acab103cfc157cfd95acb6e5a149">Neuron</a>(Type x);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classNeuron.html#a94a250ce7e167760e593979b899745b1">~Neuron</a>();</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNeuron.html#ae2bc004a58621da0d1c51591400ca87d">getPotential</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNeuron.html#a0673b707c6c716fd7da520e899a8aaba">getNumberSpikes</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::vector&lt;double&gt; <a class="code" href="classNeuron.html#ad0c083d20d9d30deb85304c79c764e56">getTime</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classNeuron.html#a622a47079d8a2a8258b0d026d1393788">getEtat</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    Type <a class="code" href="classNeuron.html#a8b68d99fcfc4bc201719915bb4152210">getType</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a3155f74f38e1aafeafdf483506fe8e8e">setBuffer</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">double</span> potential);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a5937813845387cb018add981e8ebbb90">updateState</a>(<span class="keywordtype">int</span> time, <span class="keywordtype">double</span> intensity);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a32ed4930ed9f1d5d871cae9ef712db7a">ifReceiveMessage</a>(<a class="code" href="classNeuron.html">Neuron</a>* n);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classNeuron.html#a8a86e93b1619baf27aaf1dd1ff9fc799">isRefractory</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">//for the simulation</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a524fe3ccfe30709f744fa300e8a0939b">simulationLoopNeuron</a>(<span class="keywordtype">int</span> time_simul, <span class="keywordtype">int</span> i_ext);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">//target test</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a7bbd52d7e7a1e64afcf9019539b7d364">addTarget</a>(<span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    std::vector&lt;int&gt; <a class="code" href="classNeuron.html#afc22f09f4fefb95477cb7ccaf01610b5">getTarget</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//choose random external current who spikes</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a4ff69f5aec17f723016bf3f1968a1f91">updateStatePoisson</a>(<span class="keywordtype">int</span> t, <span class="keywordtype">int</span> i_ext);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">bool</span> etat;  </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> clock;  </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">double</span> refrac_time; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> membrane_pot; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">int</span> number_spikes; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    std::vector&lt;double&gt; time_spikes; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    Type type; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::array&lt;double,29&gt; buffer;   </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::vector&lt;int&gt; targets;   </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
-<div class="ttc" id="classNeuron_html_a622a47079d8a2a8258b0d026d1393788"><div class="ttname"><a href="classNeuron.html#a622a47079d8a2a8258b0d026d1393788">Neuron::getEtat</a></div><div class="ttdeci">bool getEtat() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:57</div></div>
-<div class="ttc" id="classNeuron_html_a32ed4930ed9f1d5d871cae9ef712db7a"><div class="ttname"><a href="classNeuron.html#a32ed4930ed9f1d5d871cae9ef712db7a">Neuron::ifReceiveMessage</a></div><div class="ttdeci">void ifReceiveMessage(Neuron *n)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:112</div></div>
-<div class="ttc" id="classNeuron_html"><div class="ttname"><a href="classNeuron.html">Neuron</a></div><div class="ttdef"><b>Definition:</b> Neuron.hpp:12</div></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;Constant.hpp&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">enum</span> Type{EXCITATORY, INHIBITORY};</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classNeuron.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNeuron.html">Neuron</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classNeuron.html#a3bd1acab103cfc157cfd95acb6e5a149">Neuron</a>(Type x);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classNeuron.html#a94a250ce7e167760e593979b899745b1">~Neuron</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classNeuron.html#ae2bc004a58621da0d1c51591400ca87d">getPotential</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classNeuron.html#a0673b707c6c716fd7da520e899a8aaba">getNumberSpikes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">const</span> std::vector&lt;double&gt;&amp; <a class="code" href="classNeuron.html#ae276ec42a6a49a924b6c005405538dff">getTime</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classNeuron.html#a622a47079d8a2a8258b0d026d1393788">getEtat</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Type <a class="code" href="classNeuron.html#a8b68d99fcfc4bc201719915bb4152210">getType</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a3155f74f38e1aafeafdf483506fe8e8e">setBuffer</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">double</span> potential);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::array&lt;double,29&gt; getBuffer();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a5937813845387cb018add981e8ebbb90">updateState</a>(<span class="keywordtype">int</span> time, <span class="keywordtype">double</span> intensity);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a32ed4930ed9f1d5d871cae9ef712db7a">ifReceiveMessage</a>(<a class="code" href="classNeuron.html">Neuron</a>* n);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classNeuron.html#a8a86e93b1619baf27aaf1dd1ff9fc799">isRefractory</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//for the simulation</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#aca855d355e8f1c55834e8c562fcb5d73">simulationLoopNeuron</a>(<span class="keywordtype">int</span> time_simul, <span class="keywordtype">double</span> i_ext);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">//target test</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a7bbd52d7e7a1e64afcf9019539b7d364">addTarget</a>(<span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">const</span> std::vector&lt;int&gt;&amp; <a class="code" href="classNeuron.html#ae55576cf3fd9d89d466fb9aec6d2e585">getTarget</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">//choose random external current who spikes</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classNeuron.html#a071cc63505d7590677dd3047e531eb6e">updateStatePoisson</a>(<span class="keywordtype">int</span> t, <span class="keywordtype">double</span> i_ext);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> etat;  <span class="comment">// Spiking or not</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> clock;  <span class="comment">// Internal clock</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">double</span> refrac_time; <span class="comment">// Refractory time</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">double</span> membrane_pot; <span class="comment">// Membrane potential</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> number_spikes; <span class="comment">// Number of spikes in a given interval</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    std::vector&lt;double&gt; time_spikes; <span class="comment">// times when a Neuron spikes</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    Type type; <span class="comment">//type is exitatory or inhibiory</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::array&lt;double,29&gt; buffer;   <span class="comment">// The buffer</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    std::vector&lt;int&gt; targets;   <span class="comment">// Its connexions with others</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="ttc" id="classNeuron_html_a622a47079d8a2a8258b0d026d1393788"><div class="ttname"><a href="classNeuron.html#a622a47079d8a2a8258b0d026d1393788">Neuron::getEtat</a></div><div class="ttdeci">bool getEtat() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:61</div></div>
+<div class="ttc" id="classNeuron_html_a32ed4930ed9f1d5d871cae9ef712db7a"><div class="ttname"><a href="classNeuron.html#a32ed4930ed9f1d5d871cae9ef712db7a">Neuron::ifReceiveMessage</a></div><div class="ttdeci">void ifReceiveMessage(Neuron *n)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:117</div></div>
+<div class="ttc" id="classNeuron_html"><div class="ttname"><a href="classNeuron.html">Neuron</a></div><div class="ttdef"><b>Definition:</b> Neuron.hpp:13</div></div>
 <div class="ttc" id="classNeuron_html_a3bd1acab103cfc157cfd95acb6e5a149"><div class="ttname"><a href="classNeuron.html#a3bd1acab103cfc157cfd95acb6e5a149">Neuron::Neuron</a></div><div class="ttdeci">Neuron(Type x)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:4</div></div>
-<div class="ttc" id="classNeuron_html_a4ff69f5aec17f723016bf3f1968a1f91"><div class="ttname"><a href="classNeuron.html#a4ff69f5aec17f723016bf3f1968a1f91">Neuron::updateStatePoisson</a></div><div class="ttdeci">void updateStatePoisson(int t, int i_ext)</div><div class="ttdoc">: update the neuron with external background noise </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:151</div></div>
-<div class="ttc" id="classNeuron_html_a5937813845387cb018add981e8ebbb90"><div class="ttname"><a href="classNeuron.html#a5937813845387cb018add981e8ebbb90">Neuron::updateState</a></div><div class="ttdeci">void updateState(int time, double intensity)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:73</div></div>
+<div class="ttc" id="classNeuron_html_a071cc63505d7590677dd3047e531eb6e"><div class="ttname"><a href="classNeuron.html#a071cc63505d7590677dd3047e531eb6e">Neuron::updateStatePoisson</a></div><div class="ttdeci">void updateStatePoisson(int t, double i_ext)</div><div class="ttdoc">: update the neuron with external background noise </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:156</div></div>
+<div class="ttc" id="classNeuron_html_a5937813845387cb018add981e8ebbb90"><div class="ttname"><a href="classNeuron.html#a5937813845387cb018add981e8ebbb90">Neuron::updateState</a></div><div class="ttdeci">void updateState(int time, double intensity)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:77</div></div>
+<div class="ttc" id="classNeuron_html_ae276ec42a6a49a924b6c005405538dff"><div class="ttname"><a href="classNeuron.html#ae276ec42a6a49a924b6c005405538dff">Neuron::getTime</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; getTime() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:33</div></div>
 <div class="ttc" id="classNeuron_html_ae2bc004a58621da0d1c51591400ca87d"><div class="ttname"><a href="classNeuron.html#ae2bc004a58621da0d1c51591400ca87d">Neuron::getPotential</a></div><div class="ttdeci">double getPotential() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:17</div></div>
-<div class="ttc" id="classNeuron_html_a8a86e93b1619baf27aaf1dd1ff9fc799"><div class="ttname"><a href="classNeuron.html#a8a86e93b1619baf27aaf1dd1ff9fc799">Neuron::isRefractory</a></div><div class="ttdeci">bool isRefractory()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:50</div></div>
+<div class="ttc" id="classNeuron_html_a8a86e93b1619baf27aaf1dd1ff9fc799"><div class="ttname"><a href="classNeuron.html#a8a86e93b1619baf27aaf1dd1ff9fc799">Neuron::isRefractory</a></div><div class="ttdeci">bool isRefractory()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:54</div></div>
 <div class="ttc" id="classNeuron_html_a3155f74f38e1aafeafdf483506fe8e8e"><div class="ttname"><a href="classNeuron.html#a3155f74f38e1aafeafdf483506fe8e8e">Neuron::setBuffer</a></div><div class="ttdeci">void setBuffer(int i, double potential)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:42</div></div>
-<div class="ttc" id="classNeuron_html_ad0c083d20d9d30deb85304c79c764e56"><div class="ttname"><a href="classNeuron.html#ad0c083d20d9d30deb85304c79c764e56">Neuron::getTime</a></div><div class="ttdeci">std::vector&lt; double &gt; getTime() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:33</div></div>
-<div class="ttc" id="classNeuron_html_a8b68d99fcfc4bc201719915bb4152210"><div class="ttname"><a href="classNeuron.html#a8b68d99fcfc4bc201719915bb4152210">Neuron::getType</a></div><div class="ttdeci">Type getType() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:64</div></div>
+<div class="ttc" id="classNeuron_html_a8b68d99fcfc4bc201719915bb4152210"><div class="ttname"><a href="classNeuron.html#a8b68d99fcfc4bc201719915bb4152210">Neuron::getType</a></div><div class="ttdeci">Type getType() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:68</div></div>
 <div class="ttc" id="classNeuron_html_a0673b707c6c716fd7da520e899a8aaba"><div class="ttname"><a href="classNeuron.html#a0673b707c6c716fd7da520e899a8aaba">Neuron::getNumberSpikes</a></div><div class="ttdeci">int getNumberSpikes() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:25</div></div>
 <div class="ttc" id="classNeuron_html_a94a250ce7e167760e593979b899745b1"><div class="ttname"><a href="classNeuron.html#a94a250ce7e167760e593979b899745b1">Neuron::~Neuron</a></div><div class="ttdeci">~Neuron()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:12</div></div>
-<div class="ttc" id="classNeuron_html_a524fe3ccfe30709f744fa300e8a0939b"><div class="ttname"><a href="classNeuron.html#a524fe3ccfe30709f744fa300e8a0939b">Neuron::simulationLoopNeuron</a></div><div class="ttdeci">void simulationLoopNeuron(int time_simul, int i_ext)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:126</div></div>
-<div class="ttc" id="classNeuron_html_a7bbd52d7e7a1e64afcf9019539b7d364"><div class="ttname"><a href="classNeuron.html#a7bbd52d7e7a1e64afcf9019539b7d364">Neuron::addTarget</a></div><div class="ttdeci">void addTarget(int i)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:136</div></div>
-<div class="ttc" id="classNeuron_html_afc22f09f4fefb95477cb7ccaf01610b5"><div class="ttname"><a href="classNeuron.html#afc22f09f4fefb95477cb7ccaf01610b5">Neuron::getTarget</a></div><div class="ttdeci">std::vector&lt; int &gt; getTarget() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:142</div></div>
+<div class="ttc" id="classNeuron_html_ae55576cf3fd9d89d466fb9aec6d2e585"><div class="ttname"><a href="classNeuron.html#ae55576cf3fd9d89d466fb9aec6d2e585">Neuron::getTarget</a></div><div class="ttdeci">const std::vector&lt; int &gt; &amp; getTarget() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:147</div></div>
+<div class="ttc" id="classNeuron_html_a7bbd52d7e7a1e64afcf9019539b7d364"><div class="ttname"><a href="classNeuron.html#a7bbd52d7e7a1e64afcf9019539b7d364">Neuron::addTarget</a></div><div class="ttdeci">void addTarget(int i)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:141</div></div>
+<div class="ttc" id="classNeuron_html_aca855d355e8f1c55834e8c562fcb5d73"><div class="ttname"><a href="classNeuron.html#aca855d355e8f1c55834e8c562fcb5d73">Neuron::simulationLoopNeuron</a></div><div class="ttdeci">void simulationLoopNeuron(int time_simul, double i_ext)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:131</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 3 2017 23:24:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 10 2017 15:23:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

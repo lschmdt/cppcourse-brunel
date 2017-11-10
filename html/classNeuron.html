@@ -98,29 +98,32 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae2bc004a58621da0d1c51591400ca87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0673b707c6c716fd7da520e899a8aaba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a0673b707c6c716fd7da520e899a8aaba">getNumberSpikes</a> () const </td></tr>
 <tr class="separator:a0673b707c6c716fd7da520e899a8aaba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c083d20d9d30deb85304c79c764e56"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#ad0c083d20d9d30deb85304c79c764e56">getTime</a> () const </td></tr>
-<tr class="separator:ad0c083d20d9d30deb85304c79c764e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae276ec42a6a49a924b6c005405538dff"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#ae276ec42a6a49a924b6c005405538dff">getTime</a> () const </td></tr>
+<tr class="separator:ae276ec42a6a49a924b6c005405538dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a622a47079d8a2a8258b0d026d1393788"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a622a47079d8a2a8258b0d026d1393788">getEtat</a> () const </td></tr>
 <tr class="separator:a622a47079d8a2a8258b0d026d1393788"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b68d99fcfc4bc201719915bb4152210"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a8b68d99fcfc4bc201719915bb4152210">getType</a> () const </td></tr>
 <tr class="separator:a8b68d99fcfc4bc201719915bb4152210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3155f74f38e1aafeafdf483506fe8e8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a3155f74f38e1aafeafdf483506fe8e8e">setBuffer</a> (int i, double potential)</td></tr>
 <tr class="separator:a3155f74f38e1aafeafdf483506fe8e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33e68325575d81796d7b33af6c21cc15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33e68325575d81796d7b33af6c21cc15"></a>
+std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getBuffer</b> ()</td></tr>
+<tr class="separator:a33e68325575d81796d7b33af6c21cc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5937813845387cb018add981e8ebbb90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a5937813845387cb018add981e8ebbb90">updateState</a> (int time, double intensity)</td></tr>
 <tr class="separator:a5937813845387cb018add981e8ebbb90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32ed4930ed9f1d5d871cae9ef712db7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a32ed4930ed9f1d5d871cae9ef712db7a">ifReceiveMessage</a> (<a class="el" href="classNeuron.html">Neuron</a> *n)</td></tr>
 <tr class="separator:a32ed4930ed9f1d5d871cae9ef712db7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a86e93b1619baf27aaf1dd1ff9fc799"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a8a86e93b1619baf27aaf1dd1ff9fc799">isRefractory</a> ()</td></tr>
 <tr class="separator:a8a86e93b1619baf27aaf1dd1ff9fc799"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a524fe3ccfe30709f744fa300e8a0939b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a524fe3ccfe30709f744fa300e8a0939b">simulationLoopNeuron</a> (int time_simul, int i_ext)</td></tr>
-<tr class="separator:a524fe3ccfe30709f744fa300e8a0939b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca855d355e8f1c55834e8c562fcb5d73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#aca855d355e8f1c55834e8c562fcb5d73">simulationLoopNeuron</a> (int time_simul, double i_ext)</td></tr>
+<tr class="separator:aca855d355e8f1c55834e8c562fcb5d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7bbd52d7e7a1e64afcf9019539b7d364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a7bbd52d7e7a1e64afcf9019539b7d364">addTarget</a> (int i)</td></tr>
 <tr class="separator:a7bbd52d7e7a1e64afcf9019539b7d364"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc22f09f4fefb95477cb7ccaf01610b5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#afc22f09f4fefb95477cb7ccaf01610b5">getTarget</a> () const </td></tr>
-<tr class="separator:afc22f09f4fefb95477cb7ccaf01610b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ff69f5aec17f723016bf3f1968a1f91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a4ff69f5aec17f723016bf3f1968a1f91">updateStatePoisson</a> (int t, int i_ext)</td></tr>
-<tr class="memdesc:a4ff69f5aec17f723016bf3f1968a1f91"><td class="mdescLeft">&#160;</td><td class="mdescRight">: update the neuron with external background noise  <a href="#a4ff69f5aec17f723016bf3f1968a1f91">More...</a><br/></td></tr>
-<tr class="separator:a4ff69f5aec17f723016bf3f1968a1f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae55576cf3fd9d89d466fb9aec6d2e585"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#ae55576cf3fd9d89d466fb9aec6d2e585">getTarget</a> () const </td></tr>
+<tr class="separator:ae55576cf3fd9d89d466fb9aec6d2e585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a071cc63505d7590677dd3047e531eb6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a071cc63505d7590677dd3047e531eb6e">updateStatePoisson</a> (int t, double i_ext)</td></tr>
+<tr class="memdesc:a071cc63505d7590677dd3047e531eb6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">: update the neuron with external background noise  <a href="#a071cc63505d7590677dd3047e531eb6e">More...</a><br/></td></tr>
+<tr class="separator:a071cc63505d7590677dd3047e531eb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3bd1acab103cfc157cfd95acb6e5a149"></a>
@@ -224,12 +227,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afc22f09f4fefb95477cb7ccaf01610b5"></a>
+<a class="anchor" id="ae55576cf3fd9d89d466fb9aec6d2e585"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; int &gt; Neuron::getTarget </td>
+          <td class="memname">const std::vector&lt; int &gt; &amp; Neuron::getTarget </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -240,12 +243,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad0c083d20d9d30deb85304c79c764e56"></a>
+<a class="anchor" id="ae276ec42a6a49a924b6c005405538dff"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; double &gt; Neuron::getTime </td>
+          <td class="memname">const std::vector&lt; double &gt; &amp; Neuron::getTime </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -346,7 +349,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a524fe3ccfe30709f744fa300e8a0939b"></a>
+<a class="anchor" id="aca855d355e8f1c55834e8c562fcb5d73"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -359,7 +362,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>i_ext</em>&#160;</td>
         </tr>
         <tr>
@@ -407,7 +410,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4ff69f5aec17f723016bf3f1968a1f91"></a>
+<a class="anchor" id="a071cc63505d7590677dd3047e531eb6e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -420,7 +423,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>i_ext</em>&#160;</td>
         </tr>
         <tr>
@@ -449,7 +452,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 3 2017 23:24:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 10 2017 15:23:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
