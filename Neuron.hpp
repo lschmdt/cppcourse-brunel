@@ -5,6 +5,7 @@
 #include <vector>
 #include <array>
 #include <random>
+#include <cassert>
 #include "Constant.hpp"
 
 enum Type{EXCITATORY, INHIBITORY};
@@ -19,7 +20,8 @@ class Neuron {
 	bool getEtat() const;
 	Type getType() const;
 	void setBuffer(int i, double potential);
-	
+	std::array<double,29> getBuffer();
+
 	void updateState(int time, double intensity);
 	
 	void ifReceiveMessage(Neuron* n);
@@ -30,7 +32,7 @@ class Neuron {
 	
 	//target test
 	void addTarget(int i);
-	std::vector<int> getTarget() const;
+	const std::vector<int>& getTarget() const;
 	
 	//choose random external current who spikes
 	void updateStatePoisson(int t, double i_ext);

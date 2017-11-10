@@ -21,7 +21,30 @@ Network::Network(){
 	createConnexions();
 	
 }
+/**Constructor when we want to construct a Network with 2 Neurons
+ */
+Network::Network(Neuron* n1, Neuron* n2){
+	network.push_back(n1);
+	network.push_back(n2);
+	n1->addTarget(1);
+}
+
+/**To update two neuons without poisson
+ */
+void Network::updateTwo(int time, double intensity){
+	for(auto neuron : network){
+		for(auto connect : neuron->getTarget()){
+			neuron->ifReceiveMessage(network[connect]);
+		}
+	}
+	//we update all the neurons after updating all the buffers
+	for(auto neuron : network){
+		neuron->updateState(time, intensity);
+	}
+}
+
 /** destructor of Network class
+ * need to remove all the pointers
  */
 
 Network::~Network(){
@@ -31,9 +54,6 @@ Network::~Network(){
 	}
 }
 
-const std::vector<Neuron*>& Network::getNetwork(){
-	return network;
-}
 /**
  * This method updates our network
  * @param time : time of the simulation 
@@ -42,61 +62,60 @@ const std::vector<Neuron*>& Network::getNetwork(){
 void Network::update(int time, double intensity){
 	//We need to update the network by updating all the Neurons 
 	//and control that they are connected or not
-	for(auto& neuron : network){
+	for(auto neuron : network){
 		for(auto connect : neuron->getTarget()){
 			neuron->ifReceiveMessage(network[connect]);
 		}
 	}
 	//we update all the neurons after updating all the buffers
-	for(auto& neuron : network){
+	for(auto neuron : network){
 		neuron->updateStatePoisson(time, intensity);
 	}
 }
 
 
 /** 
- * to choose random numbers (connexion number) between two borns without taking himself 
- * to prevent the same neuron two be connect with himself
- * @param a : lowest born
- * @param b : greatest born
- * @param connexion : number of random numbers wanted
- * @return a vector<int> with all the choosen random numbers
+ * to choose random numbers (connexion number) between two bounds without taking himself 
+ * @return a vector of random number which represents our indices of connections
  */ 
-std::vector<int> Network::chooseRandomly(int a, int b, int connexion, Type type){
+std::vector<int> Network::chooseRandomly(){
 	std::default_random_engine randomGenerator; 
-	std::uniform_int_distribution<int> disENeuron(a, b);
-	std::uniform_int_distribution<int> disINeuron(a, b);
-	
-	std::vector<int> connect;
+    std::uniform_int_distribution<int> disNeuron(0, NE);
+    std::uniform_int_distribution<int> disINeuron(NE+1,N);
+    std::vector<int> connect;
+
     connect.clear(); //make sure ther is nothing inside
-	int i(0);
-	do{
+	for(int i(0); i< C; ++i){
 		int n(0);
-		if( type == EXCITATORY){
-			n = disENeuron(randomGenerator);
+		if(i<CE){
+			n = disNeuron(randomGenerator);
 		}else{
 			n = disINeuron(randomGenerator);
 		}
 		connect.push_back(n);
-		++i;
-	} while (i < connexion);
-	
-	assert((int)connect.size() == connexion);
+	}
+	assert(connect.size() == C);
 	
 	return connect;
    
 }
+	
 /**
 @return the number of connexions there are in all our Network
  */
 int Network::nbConnexion(){
-	int c;
+	int c(0);
 	for (size_t i(0); i< network.size(); ++i){
 		c += (int)network[i]->getTarget().size();
 	}
 	return c;
 }
 
+/** 
+ * to make a simulation of all the network 
+ * @param time_simul : wanted simulation time 
+ * @param i_ext : external current during the simulation
+ */
 void Network::simulationLoopNetwork(int time_simul, double i_ext){
 	int time(T_START);
 	while(time <= time_simul){
@@ -106,38 +125,34 @@ void Network::simulationLoopNetwork(int time_simul, double i_ext){
 }
 
 /**
- * this function create exactly CE and CI connexions for all Neurons.
+ * this function just keep the vector of random number and add it for one neuron
  * It add targets in the vector of all the Neurons
  */
 void Network::createConnexions(){
 	std::vector<int> indices;
 	for(size_t i(0); i < network.size(); ++i){
-		indices = chooseRandomly(0,NE,CE,EXCITATORY);
+		indices = chooseRandomly();
 		for (auto elm : indices){
-			network[i]->addTarget(elm);
-		}
-		indices.clear();
-		indices=chooseRandomly(NE,N, CI, INHIBITORY);
-		for(auto elm : indices){
 			network[i]->addTarget(elm);
 		}
 		indices.clear();
 	}
 }
 
-/**@brief creation of a file
+/**
  * use to create a file with all our spikes time
  */
 void Network::createFile(){
+//the file where our time are stored
 	std::ofstream fichier;
 	std::string nom_de_fichier("../spikes.gdf");
 	fichier.open(nom_de_fichier.c_str());
+
 	for(size_t i(0) ; i < network.size(); ++i){
 		for (auto spiketime : network[i]->getTime()){
 			fichier << spiketime << '\t' << i << '\n';
 		}
 	}
-		
 	fichier.close();
-	
 }
+

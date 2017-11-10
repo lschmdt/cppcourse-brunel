@@ -43,6 +43,10 @@ void Neuron::setBuffer(int i, double potential){
 	buffer[i] += potential;
 }
 
+std::array<double,29> Neuron::getBuffer(){
+	return buffer;
+}
+
 /**
  * to test if a Neuron is refractory or not
  * @return true if it is and false if not 
@@ -72,6 +76,7 @@ Type Neuron::getType() const{
  */
 void Neuron::updateState(int time, double intensity){ 
 	etat = false;
+	int indice(clock%(int)buffer.size());
 	//if the membrane potentiel is more then potentiel max
 	if(membrane_pot > POTENTIEL_MAX){
 		membrane_pot = POTENTIEL_RESET;
@@ -86,7 +91,7 @@ void Neuron::updateState(int time, double intensity){
 		membrane_pot = POTENTIEL_RESET;
 		refrac_time -= DT;
 		//the buffer need to be empty because this message will never arrive to destination
-		buffer[clock%(int)buffer.size()] = 0.0; 
+		buffer[indice] = 0.0; 
 		return;
 	}
 	
@@ -96,10 +101,13 @@ void Neuron::updateState(int time, double intensity){
 	/*if the buffer contains a potentiel in its step time because the neuron receives 
 	 * a message from another synapse then add it to the membrane potential
 	 */
-	if (buffer[clock%(int)buffer.size()] != 0.0){
-		membrane_pot += buffer[clock%(int)buffer.size()];
-		buffer[clock%(int)buffer.size()] = 0.0;
+	if (buffer[indice] != 0.0){
+		membrane_pot += buffer[indice];
+		//std::cout << " buffer : " << time << "  " <<buffer[indice] << std::endl;
+			buffer[indice] = 0.0;
+
 	}
+	
 	
 	clock += DT;
 }
@@ -139,7 +147,7 @@ void Neuron::addTarget(int i){
 
 /** @return the vector of target that represent the connexions
  */
-std::vector<int> Neuron::getTarget() const{
+const std::vector<int>& Neuron::getTarget() const{
 	return targets;
 }
 
@@ -150,7 +158,7 @@ std::vector<int> Neuron::getTarget() const{
  */
 void Neuron::updateStatePoisson(int t, double i_ext){
 	updateState(t, i_ext);
-	if (not isRefractory()){
+	if (refrac_time <= 0){
 		//no need to add it to he buffer because there is no need of
 		//buffer time
 		static std::random_device rd;

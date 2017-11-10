@@ -277,6 +277,8 @@ random
 -
 fstream
 -
+cassert
+-
 Constant.hpp
 /home/INTRANET/lschmidt/myfiles/cppba3/Neuron/Constant.hpp
 Neuron.hpp
@@ -296,6 +298,8 @@ vector
 array
 -
 random
+-
+cassert
 -
 Constant.hpp
 /home/INTRANET/lschmidt/myfiles/cppba3/Neuron/Constant.hpp

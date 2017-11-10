@@ -8,22 +8,27 @@
 #include <memory>
 #include <random>
 #include <fstream>
-#include "Constant.hpp"
 #include <cassert>
+#include "Constant.hpp"
 #include "Neuron.hpp"
 
 class Network {
 	public:
 	Network();
+	Network(Neuron* n1, Neuron* n2);
 	~Network();
 	
 	int nbConnexion();
 	void createConnexions();
-	const std::vector<Neuron*>& getNetwork();
 	
 	void update(int time, double intensity);
-	std::vector<int> chooseRandomly(int a, int b, int connexion, Type type);
+	
+	void updateTwo(int time, double intensity);
+	
+	std::vector<int> chooseRandomly();
+
 	void simulationLoopNetwork(int time, double i_ext);
+	
 	void createFile();
 	
 	private:
