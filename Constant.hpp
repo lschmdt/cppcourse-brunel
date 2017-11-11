@@ -13,7 +13,7 @@ int const DT(1); // Time step
 int const T_START(0); // Starting time of simulation
 int const T_STOP(1000); // ending time of simulation
 double const POTENTIEL_RESET(0.0); // Potential reset
-int const G(6); //ratio JI/JE
+int const G(5); //ratio JI/JE
 
 double const JE(0.1); // Potential to add if a neuron receive a message from exitatory neuron
 double const JI(-G*JE);//Potential to add if a neuron receive a message from inhibitory neuron
@@ -21,7 +21,7 @@ double const J(0.2); // External potential
 double const DELAY(15); // Delay for receinving the post-synaptic potential
 int const BUFFER_SIZE(DELAY+1);
 
-int const ETA(4);
+int const ETA(2);
 int const CE(NE*0.1); // Number of excitatory connexions
 int const CI(NI*0.1); // Number of inhibitory connexions
 int const C(CE+CI); //Total number of constant

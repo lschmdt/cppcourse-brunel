@@ -89,6 +89,7 @@ void Neuron::updateState(int time, double intensity){
 		++number_spikes;
 		refrac_time = REFRAC_TIME;
 		etat = true;
+		return;
 	}	
 	//if it is refractory, it has a refractory time before updating the potential
 	if (refrac_time !=0)
@@ -119,12 +120,11 @@ void Neuron::updateState(int time, double intensity){
  * Excitatory he send a JE and if it is an inhibitory it sends JI
  * @param n :the sending neuron
  */
-void Neuron::ifReceiveMessage(Neuron* n){
+void Neuron::ReceiveMessage(Neuron* n){
 	assert(n != nullptr);
-	if (n->getEtat() == true){
-		//assert(((clock + (int)(DELAY/REAL_TIME))%BUFFER_SIZE) < BUFFER_SIZE);
-		buffer[(clock + (int)(DELAY))%BUFFER_SIZE] += n->chooseJ();
-	}
+	//assert(((clock + (int)(DELAY/REAL_TIME))%BUFFER_SIZE) < BUFFER_SIZE);
+	setBuffer((clock + (int)(DELAY))%BUFFER_SIZE,n->chooseJ());
+
 }
 
 double Neuron::chooseJ(){
@@ -176,5 +176,4 @@ void Neuron::updateStatePoisson(int t, double i_ext){
 		static std::poisson_distribution<> disExternal(NU_EXT);
 		membrane_pot += disExternal(rd)*J;
 	}
-	
 }

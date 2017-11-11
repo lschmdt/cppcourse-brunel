@@ -19,13 +19,8 @@ class Network {
 	~Network();
 	
 	int nbConnexion();
-	void createConnexions();
-	
-	void update(int time, double intensity);
-	
-	void updateTwo(int time, double intensity);
-	
-	/*std::vector<int>*/ void chooseRandomly();
+	void update(int time, double intensity);	
+	void createRandomConnections();
 
 	void simulationLoopNetwork(int time, double i_ext);
 	

@@ -24,7 +24,7 @@ class Neuron {
 
 	void updateState(int time, double intensity);
 	
-	void ifReceiveMessage(Neuron* n);
+	void ReceiveMessage(Neuron* n);
 	bool isRefractory();
 	
 	//for the simulation

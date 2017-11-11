@@ -17,7 +17,7 @@ Network::Network(){
 	for(int i(0); i < NI; ++i){
 		network.push_back(new Neuron(INHIBITORY));
 	}
-	chooseRandomly();
+	createRandomConnections();
 	
 }
 /**Constructor when we want to construct a Network with 2 Neurons
@@ -28,24 +28,9 @@ Network::Network(Neuron* n1, Neuron* n2){
 	n1->addTarget(1);
 }
 
-/**To update two neuons without poisson
- */
-void Network::updateTwo(int time, double intensity){
-	for(auto& neuron : network){
-		for(auto connect : neuron->getTarget()){
-			neuron->ifReceiveMessage(network[connect]);
-		}
-	}
-	//we update all the neurons after updating all the buffers
-	for(auto& neuron : network){
-		neuron->updateState(time, intensity);
-	}
-}
-
 /** destructor of Network class
  * need to remove all the pointers
  */
-
 Network::~Network(){
 	for (auto& elm : network){
 		delete elm;
@@ -59,19 +44,19 @@ Network::~Network(){
  * @param intensity : the external intensitsy of the current
  */
 void Network::update(int time, double intensity){
-	//We need to update the network by updating all the Neurons 
+	//We need to update the network by going through all the Neurons 
 	//and control that they are connected or not
 	for(auto& neuron : network){
 		assert(neuron != nullptr);
-		for(auto connect : neuron->getTarget()){
-			assert(network[connect] != nullptr);
-			neuron->ifReceiveMessage(network[connect]);
+		if(neuron->getEtat()){
+			for(auto connect : neuron->getTarget()){
+				network[connect]->ReceiveMessage(neuron);
+			}
 		}
 	}
 	//we update all the neurons after updating all the buffers
 	for(auto& neuron : network){
-		assert(neuron != nullptr);
-		neuron->updateStatePoisson(time, intensity);
+		neuron->updateStatePoisson(time,intensity);
 	}
 }
 
@@ -80,30 +65,23 @@ void Network::update(int time, double intensity){
  * to choose random numbers (connexion number) between two bounds without taking himself 
  * @return a vector of random number which represents our indices of connections
  */ 
-/*std::vector<int>*/ void Network::chooseRandomly(){
+void Network::createRandomConnections(){
 	std::default_random_engine randomGenerator; 
     std::uniform_int_distribution<int> disNeuron(0, NE-1);
     std::uniform_int_distribution<int> disINeuron(NE,N-1);
-    //std::vector<int> connect;
 
-for(auto& neuron : network){
-	
-    //connect.clear(); //make sure ther is nothing inside
-	for(int i(0); i< C; ++i){
-		int n(0);
-		if(i<CE){
-			n = disNeuron(randomGenerator);
-			neuron->addTarget(n);
-		}else{
-			n = disINeuron(randomGenerator);
-			neuron->addTarget(n);
+	for(size_t j(0); j< network.size(); ++j){
+		for(int i(0); i< C; ++i){
+			int n(0);
+			if(i<CE){
+				n = disNeuron(randomGenerator);
+				network[n]->addTarget(j);
+			}else{
+				n = disINeuron(randomGenerator);
+				network[n]->addTarget(j);
+			}
 		}
-		//connect.push_back(n);
 	}
-	//assert(connect.size() == C);
-}
-	//return connect;
-   
 }
 	
 /**
@@ -127,21 +105,6 @@ void Network::simulationLoopNetwork(int time_simul, double i_ext){
 	while(time <= time_simul){
 		update(time, i_ext);
 		time += DT;
-	}
-}
-
-/**
- * this function just keep the vector of random number and add it for one neuron
- * It add targets in the vector of all the Neurons
- */
-void Network::createConnexions(){
-	std::vector<int> indices;
-	for(size_t i(0); i < network.size(); ++i){
-		//indices = chooseRandomly();
-		//for (auto elm : indices){
-			//network[i]->addTarget(elm);
-		//}
-		//indices.clear();
 	}
 }
 
