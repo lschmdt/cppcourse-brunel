@@ -19,9 +19,9 @@ double const JE(0.1); // Potential to add if a neuron receive a message from exi
 double const JI(-G*JE);//Potential to add if a neuron receive a message from inhibitory neuron
 double const J(0.2); // External potential
 double const DELAY(15); // Delay for receinving the post-synaptic potential
-int const BUFFER_SIZE(DELAY+1);
+int const BUFFER_SIZE(DELAY+1); //Size of our delay buffer
 
-int const ETA(2);
+int const ETA(2); //the ration between our potential
 int const CE(NE*0.1); // Number of excitatory connexions
 int const CI(NI*0.1); // Number of inhibitory connexions
 int const C(CE+CI); //Total number of constant

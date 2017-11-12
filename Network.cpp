@@ -62,8 +62,8 @@ void Network::update(int time, double intensity){
 
 
 /** 
- * to choose random numbers (connexion number) between two bounds without taking himself 
- * @return a vector of random number which represents our indices of connections
+ * to choose random numbers (connexion number) between two bounds
+ * and push them into the vector of targets for each neurons
  */ 
 void Network::createRandomConnections(){
 	std::default_random_engine randomGenerator; 

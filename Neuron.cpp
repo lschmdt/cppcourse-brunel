@@ -46,6 +46,8 @@ void Neuron::setBuffer(int i, double potential){
 	buffer[i] += potential;
 }
 
+/**@return the array which is the buffer
+ */
 std::array<double,BUFFER_SIZE> Neuron::getBuffer(){
 	return buffer;
 }
@@ -74,7 +76,7 @@ Type Neuron::getType() const{
 
 /**update the potential of the neuron. It controls if it is refractory 
  * or not and if it reachs a spike potential or not.
- * @param dt : the time interval
+ * @param time : the time of the simulation
  * @param intensity : the external intensity
  */
 void Neuron::updateState(int time, double intensity){ 
@@ -117,7 +119,8 @@ void Neuron::updateState(int time, double intensity){
 
 /**this method is useful to give a potential when two 
  * neurons are connected. if the neuron who send the message (n) is
- * Excitatory he send a JE and if it is an inhibitory it sends JI
+ * Excitatory he send JE and if it is an inhibitory it sends JI
+ * which is choosen into the method "chooseJ()"
  * @param n :the sending neuron
  */
 void Neuron::ReceiveMessage(Neuron* n){
@@ -127,6 +130,10 @@ void Neuron::ReceiveMessage(Neuron* n){
 
 }
 
+/**choose the sending potential of neurons. JI if they are inhibitory
+ * JE if they are excitatory
+ * @return JI or JE
+ */
 double Neuron::chooseJ(){
 	double j(0.0);
 	if(type == EXCITATORY){
