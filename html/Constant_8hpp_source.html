@@ -103,21 +103,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> JI(-G*JE);<span class="comment">//Potential to add if a neuron receive a message from inhibitory neuron</span></div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> J(0.2); <span class="comment">// External potential</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> DELAY(15); <span class="comment">// Delay for receinving the post-synaptic potential</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> ETA(2);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CE(NE*0.1); <span class="comment">// Number of excitatory connexions</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CI(NI*0.1); <span class="comment">// Number of inhibitory connexions</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> C(CE+CI); <span class="comment">//Total number of constant</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> NU_EXT(ETA*20/(J*TAU)); <span class="comment">// Nu extern</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> REAL_TIME(0.1); <span class="comment">// to return to the real time</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_1(exp(-REAL_TIME/TAU)); <span class="comment">// constant 1 for the membrane potentiel calculus</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_2(R*(1.0-CONSTANTE_1)); <span class="comment">// constant 2 for membrane&#39;s calculus</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> BUFFER_SIZE(DELAY+1); <span class="comment">//Size of our delay buffer</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> ETA(2); <span class="comment">//the ration between our potential</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CE(NE*0.1); <span class="comment">// Number of excitatory connexions</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> CI(NI*0.1); <span class="comment">// Number of inhibitory connexions</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keywordtype">int</span> <span class="keyword">const</span> C(CE+CI); <span class="comment">//Total number of constant</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> NU_EXT(ETA*20/(J*TAU)); <span class="comment">// Nu extern</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> REAL_TIME(0.1); <span class="comment">// to return to the real time</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_1(exp(-REAL_TIME/TAU)); <span class="comment">// constant 1 for the membrane potentiel calculus</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">double</span> <span class="keyword">const</span> CONSTANTE_2(R*(1.0-CONSTANTE_1)); <span class="comment">// constant 2 for membrane&#39;s calculus</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 10 2017 15:23:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 12 2017 16:03:00 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['getbuffer',['getBuffer',['../classNeuron.html#aace5cbf9469534403a70b35f0cc8d083',1,'Neuron']]],
   ['getetat',['getEtat',['../classNeuron.html#a622a47079d8a2a8258b0d026d1393788',1,'Neuron']]],
   ['getnumberspikes',['getNumberSpikes',['../classNeuron.html#a0673b707c6c716fd7da520e899a8aaba',1,'Neuron']]],
   ['getpotential',['getPotential',['../classNeuron.html#ae2bc004a58621da0d1c51591400ca87d',1,'Neuron']]],

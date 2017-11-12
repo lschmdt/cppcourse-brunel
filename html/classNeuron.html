@@ -106,13 +106,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8b68d99fcfc4bc201719915bb4152210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3155f74f38e1aafeafdf483506fe8e8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a3155f74f38e1aafeafdf483506fe8e8e">setBuffer</a> (int i, double potential)</td></tr>
 <tr class="separator:a3155f74f38e1aafeafdf483506fe8e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33e68325575d81796d7b33af6c21cc15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33e68325575d81796d7b33af6c21cc15"></a>
-std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getBuffer</b> ()</td></tr>
-<tr class="separator:a33e68325575d81796d7b33af6c21cc15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aace5cbf9469534403a70b35f0cc8d083"><td class="memItemLeft" align="right" valign="top">std::array&lt; double, BUFFER_SIZE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#aace5cbf9469534403a70b35f0cc8d083">getBuffer</a> ()</td></tr>
+<tr class="separator:aace5cbf9469534403a70b35f0cc8d083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5937813845387cb018add981e8ebbb90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a5937813845387cb018add981e8ebbb90">updateState</a> (int time, double intensity)</td></tr>
 <tr class="separator:a5937813845387cb018add981e8ebbb90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32ed4930ed9f1d5d871cae9ef712db7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a32ed4930ed9f1d5d871cae9ef712db7a">ifReceiveMessage</a> (<a class="el" href="classNeuron.html">Neuron</a> *n)</td></tr>
-<tr class="separator:a32ed4930ed9f1d5d871cae9ef712db7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a623d1af51cad4793a2d18f6378207664"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a623d1af51cad4793a2d18f6378207664">ReceiveMessage</a> (<a class="el" href="classNeuron.html">Neuron</a> *n)</td></tr>
+<tr class="separator:a623d1af51cad4793a2d18f6378207664"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a86e93b1619baf27aaf1dd1ff9fc799"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a8a86e93b1619baf27aaf1dd1ff9fc799">isRefractory</a> ()</td></tr>
 <tr class="separator:a8a86e93b1619baf27aaf1dd1ff9fc799"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca855d355e8f1c55834e8c562fcb5d73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#aca855d355e8f1c55834e8c562fcb5d73">simulationLoopNeuron</a> (int time_simul, double i_ext)</td></tr>
@@ -121,6 +120,8 @@ std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom
 <tr class="separator:a7bbd52d7e7a1e64afcf9019539b7d364"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae55576cf3fd9d89d466fb9aec6d2e585"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#ae55576cf3fd9d89d466fb9aec6d2e585">getTarget</a> () const </td></tr>
 <tr class="separator:ae55576cf3fd9d89d466fb9aec6d2e585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a0d51590957b43db50bda514f0955e1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a9a0d51590957b43db50bda514f0955e1">chooseJ</a> ()</td></tr>
+<tr class="separator:a9a0d51590957b43db50bda514f0955e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a071cc63505d7590677dd3047e531eb6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNeuron.html#a071cc63505d7590677dd3047e531eb6e">updateStatePoisson</a> (int t, double i_ext)</td></tr>
 <tr class="memdesc:a071cc63505d7590677dd3047e531eb6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">: update the neuron with external background noise  <a href="#a071cc63505d7590677dd3047e531eb6e">More...</a><br/></td></tr>
 <tr class="separator:a071cc63505d7590677dd3047e531eb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,6 +175,45 @@ std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom
       </table>
 </div><div class="memdoc">
 <p>to add a connexion with an other <a class="el" href="classNeuron.html">Neuron</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>: indice of connected neurons </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a9a0d51590957b43db50bda514f0955e1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Neuron::chooseJ </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>choose the sending potential of neurons. JI if they are inhibitory JE if they are excitatory </p>
+<dl class="section return"><dt>Returns</dt><dd>JI or JE </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aace5cbf9469534403a70b35f0cc8d083"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::array&lt; double, BUFFER_SIZE &gt; Neuron::getBuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the array which is the buffer </dd></dl>
 
 </div>
 </div>
@@ -275,29 +315,6 @@ std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom
 
 </div>
 </div>
-<a class="anchor" id="a32ed4930ed9f1d5d871cae9ef712db7a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Neuron::ifReceiveMessage </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classNeuron.html">Neuron</a> *&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>this method is useful to give a potential when two neurons are connected. if the neuron who send the message (n) is Excitatory he send a JE and if it is an inhibitory it sends JI </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>:the sending neuron </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="a8a86e93b1619baf27aaf1dd1ff9fc799"></a>
 <div class="memitem">
 <div class="memproto">
@@ -312,6 +329,29 @@ std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom
 </div><div class="memdoc">
 <p>to test if a <a class="el" href="classNeuron.html">Neuron</a> is refractory or not </p>
 <dl class="section return"><dt>Returns</dt><dd>true if it is and false if not </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a623d1af51cad4793a2d18f6378207664"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Neuron::ReceiveMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classNeuron.html">Neuron</a> *&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>this method is useful to give a potential when two neurons are connected. if the neuron who send the message (n) is Excitatory he send JE and if it is an inhibitory it sends JI which is choosen into the method "chooseJ()" </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>:the sending neuron </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -373,6 +413,13 @@ std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom
       </table>
 </div><div class="memdoc">
 <p>make a Simulation loop for a given time. It helps for the test </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_simul</td><td>: time for our simulation </td></tr>
+    <tr><td class="paramname">i_ext</td><td>: external current </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -402,7 +449,7 @@ std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom
 <p>update the potential of the neuron. It controls if it is refractory or not and if it reachs a spike potential or not. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>: the time interval </td></tr>
+    <tr><td class="paramname">time</td><td>: the time of the simulation </td></tr>
     <tr><td class="paramname">intensity</td><td>: the external intensity </td></tr>
   </table>
   </dd>
@@ -452,7 +499,7 @@ std::array&lt; double, 29 &gt;&#160;</td><td class="memItemRight" valign="bottom
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 10 2017 15:23:40 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 12 2017 16:03:00 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
